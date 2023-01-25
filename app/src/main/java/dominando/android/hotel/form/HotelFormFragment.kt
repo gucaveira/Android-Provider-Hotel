@@ -9,19 +9,19 @@ import android.view.inputmethod.EditorInfo
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
-import dominando.android.hotel.model.Hotel
 import dominando.android.hotel.R
 import dominando.android.hotel.databinding.FragmentHotelFormBinding
 import dominando.android.hotel.form.presenter.HotelFormPresenter
 import dominando.android.hotel.form.presenter.HotelFormView
-import dominando.android.hotel.repository.memory.MemoryRepository
+import dominando.android.hotel.model.Hotel
+import org.koin.android.ext.android.inject
+import org.koin.core.parameter.parametersOf
 
 class HotelFormFragment : DialogFragment(), HotelFormView {
 
     private var _binding: FragmentHotelFormBinding? = null
     private val binding: FragmentHotelFormBinding get() = _binding!!
-
-    private val presenter = HotelFormPresenter(this, MemoryRepository)
+    private val presenter: HotelFormPresenter by inject { parametersOf(this) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

@@ -10,15 +10,16 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.ShareActionProvider
 import androidx.core.view.MenuItemCompat
 import androidx.fragment.app.Fragment
+import dominando.android.hotel.R
+import dominando.android.hotel.databinding.FragmentHotelDetailsBinding
 import dominando.android.hotel.details.presenter.HotelDetailsPresenter
 import dominando.android.hotel.details.presenter.HotelDetailsView
 import dominando.android.hotel.model.Hotel
-import dominando.android.hotel.R
-import dominando.android.hotel.databinding.FragmentHotelDetailsBinding
-import dominando.android.hotel.repository.memory.MemoryRepository
+import org.koin.android.ext.android.inject
+import org.koin.core.parameter.parametersOf
 
 class HotelDetailsFragment : Fragment(), HotelDetailsView {
-    private val presenter = HotelDetailsPresenter(this, MemoryRepository)
+    private val presenter: HotelDetailsPresenter by inject { parametersOf(this) }
     private var hotel: Hotel? = null
     private var shareActionProvider: ShareActionProvider? = null
 

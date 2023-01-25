@@ -15,7 +15,8 @@ import dominando.android.hotel.list.presenter.HotelListView
 import dominando.android.hotel.model.Hotel
 import com.google.android.material.snackbar.Snackbar
 import dominando.android.hotel.R
-import dominando.android.hotel.repository.memory.MemoryRepository
+import org.koin.android.ext.android.inject
+import org.koin.core.parameter.parametersOf
 
 class HotelListFragment : ListFragment(),
     HotelListView,
@@ -24,7 +25,7 @@ class HotelListFragment : ListFragment(),
 
     private var actionMode: ActionMode? = null
 
-    private val presenter = HotelListPresenter(this, MemoryRepository)
+    private val presenter: HotelListPresenter by inject { parametersOf(this) }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
