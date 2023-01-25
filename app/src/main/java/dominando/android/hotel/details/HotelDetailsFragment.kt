@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.ShareActionProvider
@@ -14,6 +15,7 @@ import dominando.android.hotel.R
 import dominando.android.hotel.databinding.FragmentHotelDetailsBinding
 import dominando.android.hotel.details.presenter.HotelDetailsPresenter
 import dominando.android.hotel.details.presenter.HotelDetailsView
+import dominando.android.hotel.form.HotelFormFragment
 import dominando.android.hotel.model.Hotel
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
@@ -50,6 +52,14 @@ class HotelDetailsFragment : Fragment(), HotelDetailsView {
         shareActionProvider = MenuItemCompat.getActionProvider(shareItem) as? ShareActionProvider
         setShareIntent()
     }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.action_edit) {
+            HotelFormFragment.newInstance(hotel?.id ?: 0).open(parentFragmentManager)
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
 
     private fun setShareIntent() {
         val text = getString(

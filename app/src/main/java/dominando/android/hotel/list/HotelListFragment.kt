@@ -5,16 +5,16 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.view.ActionMode
 import androidx.fragment.app.ListFragment
+import com.google.android.material.snackbar.Snackbar
+import dominando.android.hotel.HotelAdapter
+import dominando.android.hotel.R
 import dominando.android.hotel.list.presenter.HotelListPresenter
 import dominando.android.hotel.list.presenter.HotelListView
 import dominando.android.hotel.model.Hotel
-import com.google.android.material.snackbar.Snackbar
-import dominando.android.hotel.R
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 
@@ -35,7 +35,7 @@ class HotelListFragment : ListFragment(),
     }
 
     override fun showHotels(hotels: List<Hotel>) {
-        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_activated_1, hotels)
+        val adapter = HotelAdapter(requireContext(), hotels)
         listAdapter = adapter
     }
 
