@@ -13,18 +13,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DominandoFragments"
         tools:targetApi="31">
+        <provider
+            android:name=".HotelProvider"
+            android:authorities="dominando.android.hotel"
+            android:enabled="true"
+            android:exported="true" />
+
         <activity
             android:name=".details.HotelDetailsActivity"
-            android:parentActivityName=".common.HotelActivity"
-            android:exported="false">
+            android:exported="false"
+            android:parentActivityName=".common.HotelActivity">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".common.HotelActivity"
-            android:launchMode="singleTop"
-            android:exported="true">
+            android:exported="true"
+            android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

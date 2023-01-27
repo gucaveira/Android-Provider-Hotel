@@ -4,7 +4,7 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
-class HotelSqlHelper(context: Context) : SQLiteOpenHelper(
+class HotelSqlHelper(context: Context?) : SQLiteOpenHelper(
     context,
     DATABASE_NAME,
     null,
